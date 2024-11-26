@@ -14,14 +14,24 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-require_once(dirname(__FILE__) . '/../../config.php');
-require_login();
+/**
+ * Tasks definition for local_test.
+ *
+ * @package    local_test
+ * @copyright  2024 ISB Bayern
+ * @author     Philipp Memmel
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
-global $OUTPUT, $PAGE;
+defined('MOODLE_INTERNAL') || die();
 
-$PAGE->set_context(context_system::instance());
-$PAGE->set_url('/local/showmodal.php');
-$PAGE->requires->js_call_amd('local_test/rendermodal', 'init');
-
-echo $OUTPUT->header();
-echo $OUTPUT->footer();
+$tasks = [
+        [
+                'classname' => 'local_test\task\session_exists_task',
+                'minute' => '0',
+                'hour' => '*',
+                'day' => '*',
+                'dayofweek' => '*',
+                'month' => '*',
+        ],
+];
